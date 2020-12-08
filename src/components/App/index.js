@@ -1,14 +1,22 @@
 // == Import npm
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // == Import
-import GetStarted from 'src/components/GetStarted';
+import SignIn from 'src/containers/SignIn';
+import SignUp from 'src/containers/SignUp';
+
 import './styles.css';
 
 // == Composant
 const App = () => (
   <div className="app">
-    <GetStarted />
+    <Router>
+      <Switch>
+        <Route path="/" exact component={SignIn} />
+        <Route path="/signup" exact component={SignUp} />
+      </Switch>
+    </Router>
   </div>
 );
 
