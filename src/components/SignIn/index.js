@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import PropTypes from 'prop-types';
 
 function Copyright() {
   return (
@@ -46,9 +47,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+export default function SignIn({ email, password, onInputChange }) {
   const classes = useStyles();
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    onInputChange({
+      [name]: value,
+    });
+  };
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -70,6 +78,8 @@ export default function SignIn() {
             name="email"
             autoComplete="email"
             autoFocus
+            value={email}
+            onChange={handleChange}
           />
           <TextField
             variant="outlined"
@@ -81,6 +91,8 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
+            value={password}
+            onChange={handleChange}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -102,7 +114,7 @@ export default function SignIn() {
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/signup" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
@@ -115,3 +127,9 @@ export default function SignIn() {
     </Container>
   );
 }
+
+SignIn.propTypes = {
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+};
