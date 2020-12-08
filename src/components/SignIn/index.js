@@ -1,5 +1,8 @@
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
+import Snackbar from '@material-ui/core/Snackbar';
+
+import Alert from '@material-ui/lab/Alert';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -47,7 +50,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn({ email, password, onInputChange }) {
+export default function SignIn({
+  email,
+  password,
+  onInputChange,
+  onInputSubmit,
+  isError,
+  errorMessage,
+  closeError,
+}) {
   const classes = useStyles();
 
   const handleChange = (e) => {
@@ -67,7 +78,21 @@ export default function SignIn({ email, password, onInputChange }) {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <Snackbar
+          open={isError}
+          onClick={closeError}
+          anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        >
+          <Alert severity="error">{isError && errorMessage}</Alert>
+        </Snackbar>
+        <form
+          className={classes.form}
+          noValidate
+          onSubmit={(e) => {
+            e.preventDefault();
+            onInputSubmit();
+          }}
+        >
           <TextField
             variant="outlined"
             margin="normal"
@@ -115,7 +140,7 @@ export default function SignIn({ email, password, onInputChange }) {
             </Grid>
             <Grid item>
               <Link href="/signup" variant="body2">
-                {"Don't have an account? Sign Up"}
+                "Don't have an account? Sign Up"
               </Link>
             </Grid>
           </Grid>
@@ -132,4 +157,8 @@ SignIn.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   onInputChange: PropTypes.func.isRequired,
+  onInputSubmit: PropTypes.func.isRequired,
+  isError: PropTypes.bool.isRequired,
+  closeError: PropTypes.func.isRequired,
+  errorMessage: PropTypes.string.isRequired,
 };

@@ -1,15 +1,29 @@
 import { connect } from 'react-redux';
 import SignIn from '../components/SignIn';
-import { loginInputChange } from '../actions/signInActions';
+import {
+  loginInputChange,
+  loginSubmit,
+  closeErrorMess,
+} from '../actions/signInActions';
 
 const mapState = (state) => ({
-  email: state.user.logData.email,
-  password: state.user.logData.password,
+  email: state.user.signInData.email,
+  password: state.user.signInData.password,
+  isError: state.user.error.isError,
+  errorMessage: state.user.error.errorMessage,
 });
 
 const mapDispatch = (dispatch) => ({
   onInputChange: (data) => {
     dispatch(loginInputChange(data));
+  },
+
+  onInputSubmit: () => {
+    dispatch(loginSubmit());
+  },
+
+  closeError: () => {
+    dispatch(closeErrorMess());
   },
 });
 

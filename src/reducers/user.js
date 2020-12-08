@@ -1,15 +1,32 @@
-import { LOGIN_INPUT_CHANGE } from '../actions/signInActions';
+import {
+  LOGIN_INPUT_CHANGE,
+  LOGIN_SUBMIT,
+  LOGIN_SUCCESS,
+  LOGIN_ERROR,
+  CLOSE_ERROR,
+} from '../actions/signInActions';
+
+import { SIGNUP_INPUT_CHANGE } from '../actions/signUpActions';
 
 const initialState = {
-  logData: {
+  signInData: {
     email: '',
     password: '',
   },
-  signData: {
+  loggedData: {
+    firstName: '',
+    lastName: '',
+    email: '',
+  },
+  signUpData: {
     firstName: '',
     lastName: '',
     email: '',
     password: '',
+  },
+  error: {
+    errorMessage: '',
+    isError: false,
   },
 };
 
@@ -18,8 +35,46 @@ const user = (state = initialState, action = {}) => {
     case LOGIN_INPUT_CHANGE:
       return {
         ...state,
-        logData: {
-          ...state.logData,
+        signInData: {
+          ...state.signInData,
+          ...action.payload,
+        },
+      };
+    case LOGIN_SUBMIT:
+      return {
+        ...state,
+      };
+
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        loggedData: {
+          firstName: action.payload.firstname,
+          lastName: action.payload.lastname,
+          email: action.payload.email,
+        },
+      };
+    case LOGIN_ERROR:
+      return {
+        ...state,
+        error: {
+          errorMessage: action.payload,
+          isError: true,
+        },
+      };
+    case CLOSE_ERROR:
+      return {
+        ...state,
+        error: {
+          errorMEssage: '',
+          isError: false,
+        },
+      };
+    case SIGNUP_INPUT_CHANGE:
+      return {
+        ...state,
+        signUpData: {
+          ...state.signUpData,
           ...action.payload,
         },
       };
