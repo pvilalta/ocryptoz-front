@@ -15,11 +15,6 @@ const initialState = {
     email: '',
     password: '',
   },
-  loggedData: {
-    firstName: '',
-    lastName: '',
-    email: '',
-  },
   signUpData: {
     firstname: '',
     lastname: '',
@@ -28,6 +23,7 @@ const initialState = {
     password: '',
     passwordConfirmation: '',
   },
+  loggedData: {},
 };
 
 const user = (state = initialState, action = {}) => {
@@ -49,9 +45,14 @@ const user = (state = initialState, action = {}) => {
       return {
         ...state,
         loggedData: {
-          firstName: action.payload.firstname,
-          lastName: action.payload.lastname,
+          id: action.payload.id,
+          firstname: action.payload.firstname,
+          lastname: action.payload.lastname,
           email: action.payload.email,
+        },
+        signInData: {
+          email: '',
+          password: '',
         },
       };
     case SIGNUP_INPUT_CHANGE:
@@ -69,6 +70,14 @@ const user = (state = initialState, action = {}) => {
     case SIGNUP_SUCCESS:
       return {
         ...state,
+        signUpData: {
+          firstname: '',
+          lastname: '',
+          email: '',
+          country: '',
+          password: '',
+          passwordConfirmation: '',
+        },
       };
     default:
       return state;

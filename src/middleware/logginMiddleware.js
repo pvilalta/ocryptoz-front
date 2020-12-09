@@ -11,12 +11,16 @@ import {
   signUpError,
 } from '../actions/signUpActions';
 
+import { getMainWallet } from '../actions/walletActions';
+
 const api = 'http://localhost:1234';
 const login = '/login';
 const account = '/account';
 let url;
 export default (store) => (next) => (action) => {
   next(action);
+
+  const { dispatch } = store;
 
   switch (action.type) {
     case LOGIN_SUBMIT:
@@ -27,10 +31,11 @@ export default (store) => (next) => (action) => {
         data: store.getState().user.signInData,
       })
         .then((res) => {
-          store.dispatch(loginSuccess(res.data));
+          dispatch(loginSuccess(res.data));
+          dispatch(getMainWallet(res.data.id));
         })
         .catch((err) => {
-          store.dispatch(loginError(err.response.data));
+          dispatch(loginError(err.response.data));
         });
       break;
     case SIGNUP_SUBMIT:
@@ -41,10 +46,10 @@ export default (store) => (next) => (action) => {
         data: store.getState().user.signUpData,
       })
         .then((res) => {
-          store.dispatch(signUpSuccess());
+          dispatch(signUpSuccess());
         })
         .catch((err) => {
-          store.dispatch(signUpError(err.response.data));
+          dispatch(signUpError(err.response.data));
         });
       break;
     default:
