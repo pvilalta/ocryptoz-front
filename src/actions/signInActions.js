@@ -22,7 +22,3 @@ export const loginError = (payload) => ({
   type: LOGIN_ERROR,
   payload,
 });
-
-export const closeErrorMess = () => ({
-  type: CLOSE_ERROR,
-});
