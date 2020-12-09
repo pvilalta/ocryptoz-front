@@ -34,6 +34,7 @@ export default (store) => (next) => (action) => {
           dispatch(loginSuccess(res.data));
           dispatch(getMainWallet(res.data.id));
         })
+
         .catch((err) => {
           dispatch(loginError(err.response.data));
         });
@@ -45,7 +46,7 @@ export default (store) => (next) => (action) => {
         url,
         data: store.getState().user.signUpData,
       })
-        .then((res) => {
+        .then(() => {
           dispatch(signUpSuccess());
         })
         .catch((err) => {
