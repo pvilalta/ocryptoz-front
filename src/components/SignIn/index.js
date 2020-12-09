@@ -1,8 +1,5 @@
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
-import Snackbar from '@material-ui/core/Snackbar';
-
-import Alert from '@material-ui/lab/Alert';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -16,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import PropTypes from 'prop-types';
+import Error from '../../containers/Error';
 
 function Copyright() {
   return (
@@ -55,9 +53,6 @@ export default function SignIn({
   password,
   onInputChange,
   onInputSubmit,
-  isError,
-  errorMessage,
-  closeError,
 }) {
   const classes = useStyles();
 
@@ -78,13 +73,7 @@ export default function SignIn({
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <Snackbar
-          open={isError}
-          onClick={closeError}
-          anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        >
-          <Alert severity="error">{isError && errorMessage}</Alert>
-        </Snackbar>
+        <Error />
         <form
           className={classes.form}
           noValidate
@@ -158,7 +147,4 @@ SignIn.propTypes = {
   password: PropTypes.string.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onInputSubmit: PropTypes.func.isRequired,
-  isError: PropTypes.bool.isRequired,
-  closeError: PropTypes.func.isRequired,
-  errorMessage: PropTypes.string.isRequired,
 };

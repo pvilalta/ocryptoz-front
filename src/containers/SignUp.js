@@ -1,17 +1,23 @@
 import { connect } from 'react-redux';
 import SignUp from '../components/SignUp';
-import { signUpInputChange } from '../actions/signUpActions';
+import { signUpInputChange, signUpSubmit } from '../actions/signUpActions';
 
 const mapState = (state) => ({
-  firstName: state.user.signUpData.firstName,
-  lastName: state.user.signUpData.lastName,
+  firstname: state.user.signUpData.firstname,
+  lastname: state.user.signUpData.lastname,
   email: state.user.signUpData.email,
+  country: state.user.signUpData.country,
   password: state.user.signUpData.password,
+  passwordConfirmation: state.user.signUpData.passwordConfirmation,
 });
 
 const mapDispatch = (dispatch) => ({
   onInputChange: (data) => {
     dispatch(signUpInputChange(data));
+  },
+
+  onInputSubmit: () => {
+    dispatch(signUpSubmit());
   },
 });
 

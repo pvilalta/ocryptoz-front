@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import PropTypes from 'prop-types';
+import Error from '../../containers/Error';
 
 function Copyright() {
   return (
@@ -46,11 +47,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp({
-  firstName,
-  lastName,
+  firstname,
+  lastname,
   email,
   password,
+  passwordConfirmation,
+  country,
   onInputChange,
+  onInputSubmit,
 }) {
   const classes = useStyles();
 
@@ -72,18 +76,26 @@ export default function SignUp({
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <Error />
+        <form
+          className={classes.form}
+          noValidate
+          onSubmit={(e) => {
+            e.preventDefault();
+            onInputSubmit();
+          }}
+        >
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
-                name="firstName"
+                name="firstname"
                 variant="outlined"
                 fullWidth
                 id="firstName"
                 label="First Name"
                 autoFocus
-                value={firstName}
+                value={firstname}
                 onChange={handleChange}
               />
             </Grid>
@@ -93,9 +105,9 @@ export default function SignUp({
                 fullWidth
                 id="lastName"
                 label="Last Name"
-                name="lastName"
+                name="lastname"
                 autoComplete="lname"
-                value={lastName}
+                value={lastname}
                 onChange={handleChange}
               />
             </Grid>
@@ -126,6 +138,33 @@ export default function SignUp({
                 onChange={handleChange}
               />
             </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="passwordConfirmation"
+                label="Password Confirmation"
+                type="password"
+                id="passwordConfirmation"
+                autoComplete="current-password"
+                value={passwordConfirmation}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="country"
+                label="Country"
+                id="country"
+                autoComplete="country"
+                value={country}
+                onChange={handleChange}
+              />
+            </Grid>
           </Grid>
           <Button
             type="submit"
@@ -153,9 +192,12 @@ export default function SignUp({
 }
 
 SignUp.propTypes = {
-  firstName: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired,
+  firstname: PropTypes.string.isRequired,
+  lastname: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
+  passwordConfirmation: PropTypes.string.isRequired,
+  country: PropTypes.string.isRequired,
   onInputChange: PropTypes.func.isRequired,
+  onInputSubmit: PropTypes.func.isRequired,
 };

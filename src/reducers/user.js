@@ -2,11 +2,13 @@ import {
   LOGIN_INPUT_CHANGE,
   LOGIN_SUBMIT,
   LOGIN_SUCCESS,
-  LOGIN_ERROR,
-  CLOSE_ERROR,
 } from '../actions/signInActions';
 
-import { SIGNUP_INPUT_CHANGE } from '../actions/signUpActions';
+import {
+  SIGNUP_INPUT_CHANGE,
+  SIGNUP_SUBMIT,
+  SIGNUP_SUCCESS,
+} from '../actions/signUpActions';
 
 const initialState = {
   signInData: {
@@ -19,14 +21,12 @@ const initialState = {
     email: '',
   },
   signUpData: {
-    firstName: '',
-    lastName: '',
+    firstname: '',
+    lastname: '',
     email: '',
+    country: '',
     password: '',
-  },
-  error: {
-    errorMessage: '',
-    isError: false,
+    passwordConfirmation: '',
   },
 };
 
@@ -54,22 +54,6 @@ const user = (state = initialState, action = {}) => {
           email: action.payload.email,
         },
       };
-    case LOGIN_ERROR:
-      return {
-        ...state,
-        error: {
-          errorMessage: action.payload,
-          isError: true,
-        },
-      };
-    case CLOSE_ERROR:
-      return {
-        ...state,
-        error: {
-          errorMEssage: '',
-          isError: false,
-        },
-      };
     case SIGNUP_INPUT_CHANGE:
       return {
         ...state,
@@ -77,6 +61,14 @@ const user = (state = initialState, action = {}) => {
           ...state.signUpData,
           ...action.payload,
         },
+      };
+    case SIGNUP_SUBMIT:
+      return {
+        ...state,
+      };
+    case SIGNUP_SUCCESS:
+      return {
+        ...state,
       };
     default:
       return state;
