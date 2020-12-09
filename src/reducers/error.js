@@ -1,6 +1,6 @@
 import { CLOSE_ERROR } from '../actions/errorActions';
-import { LOGIN_ERROR } from '../actions/signInActions';
-import { SIGNUP_ERROR } from '../actions/signUpActions';
+import { LOGIN_ERROR, LOGIN_SUBMIT } from '../actions/signInActions';
+import { SIGNUP_ERROR, SIGNUP_SUBMIT } from '../actions/signUpActions';
 
 const initialState = {
   error: {
@@ -27,12 +27,28 @@ const error = (state = initialState, action = {}) => {
           isError: true,
         },
       };
+    case LOGIN_SUBMIT:
+      return {
+        ...state,
+        error: {
+          errorMessage: '',
+          isError: false,
+        },
+      };
     case SIGNUP_ERROR:
       return {
         ...state,
         error: {
           errorMessage: action.payload,
           isError: true,
+        },
+      };
+    case SIGNUP_SUBMIT:
+      return {
+        ...state,
+        error: {
+          errorMessage: '',
+          isError: false,
         },
       };
     default:

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import counter from './counter';
 import user from './user';
 import error from './error';
+import wallet from './wallet';
 
 export default combineReducers({
-  counter,
   user,
   error,
+  wallet,
 });
