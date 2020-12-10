@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 // == Import
 import SignIn from 'src/containers/SignIn';
 import SignUp from 'src/containers/SignUp';
-import Dashboard from 'src/components/Dashboard';
+import Dashboard from 'src/containers/Dashboard';
 
 import './styles.css';
 

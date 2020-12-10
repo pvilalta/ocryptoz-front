@@ -45,10 +45,7 @@ const user = (state = initialState, action = {}) => {
       return {
         ...state,
         loggedData: {
-          id: action.payload.id,
-          firstname: action.payload.firstname,
-          lastname: action.payload.lastname,
-          email: action.payload.email,
+          email: state.signInData.email,
         },
         signInData: {
           email: '',

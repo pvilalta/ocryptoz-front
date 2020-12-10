@@ -29,11 +29,13 @@ export default (store) => (next) => (action) => {
         method: 'post',
         url,
         data: store.getState().user.signInData,
+        withCredentials: true,
       })
-        .then((res) => {
-          dispatch(loginSuccess(res.data));
-          dispatch(getMainWallet(res.data.id));
+        .then(() => {
+          dispatch(loginSuccess());
+          dispatch(getMainWallet());
         })
+
         .catch((err) => {
           dispatch(loginError(err.response.data));
         });
@@ -45,7 +47,7 @@ export default (store) => (next) => (action) => {
         url,
         data: store.getState().user.signUpData,
       })
-        .then((res) => {
+        .then(() => {
           dispatch(signUpSuccess());
         })
         .catch((err) => {
