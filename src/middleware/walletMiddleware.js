@@ -5,7 +5,7 @@ import {
 } from '../actions/walletActions';
 
 const api = 'http://localhost:1234';
-const wallet = '/main/wallet/';
+const wallet = '/main/wallet';
 
 let url;
 export default (store) => (next) => (action) => {
@@ -15,11 +15,12 @@ export default (store) => (next) => (action) => {
 
   switch (action.type) {
     case GET_MAIN_WALLET:
-      url = api.concat(wallet).concat(action.payload);
+      url = api.concat(wallet);
       axios({
         method: 'get',
         url,
       }).then((res) => {
+        console.log('res', res);
         dispatch(getMainWalletSuccess(res.data));
       });
       break;
