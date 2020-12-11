@@ -1,6 +1,7 @@
 import { CLOSE_ERROR } from '../actions/errorActions';
 import { LOGIN_ERROR, LOGIN_SUBMIT } from '../actions/signInActions';
 import { SIGNUP_ERROR, SIGNUP_SUBMIT } from '../actions/signUpActions';
+import { EVENT_ERROR, EVENT_SUBMIT } from '../actions/eventActions';
 
 const initialState = {
   error: {
@@ -44,6 +45,22 @@ const error = (state = initialState, action = {}) => {
         },
       };
     case SIGNUP_SUBMIT:
+      return {
+        ...state,
+        error: {
+          errorMessage: '',
+          isError: false,
+        },
+      };
+    case EVENT_ERROR:
+      return {
+        ...state,
+        error: {
+          errorMessage: action.payload,
+          isError: true,
+        },
+      };
+    case EVENT_SUBMIT:
       return {
         ...state,
         error: {

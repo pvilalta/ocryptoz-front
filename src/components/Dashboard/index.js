@@ -23,7 +23,7 @@ import { mainListItems, secondaryListItems } from './ListItems';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import AssetArray from '../../containers/AssetArray';
-import Event from './Event';
+import Event from '../../containers/Event';
 
 function Copyright() {
   return (
@@ -129,9 +129,6 @@ export default function Dashboard({ showForm }) {
     setOpen(false);
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-
-  console.log('showForm', showForm);
-
   return (
     <div className={classes.root}>
       <CssBaseline />
