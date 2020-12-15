@@ -6,7 +6,7 @@ import match from 'autosuggest-highlight/match';
 import PropTypes from 'prop-types';
 
 export default function DataField(props) {
-  const { data, onInputChange, dataForm, name, label } = props;
+  const { data, onInputChange, dataForm, name, label, required } = props;
   const ref0 = useRef();
 
   const handleAutocompleteChange = (e, values) => {
@@ -34,7 +34,7 @@ export default function DataField(props) {
           variant="outlined"
           name={name}
           value={dataForm[name] || ''}
-          required
+          required={required}
         />
       )}
       renderOption={(option, { inputValue }) => {
@@ -64,4 +64,5 @@ DataField.propTypes = {
   data: PropTypes.array.isRequired,
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  required: PropTypes.bool.isRequired,
 };

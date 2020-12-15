@@ -3,13 +3,13 @@ import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
 
 export default function NumberField(props) {
-  const { dataForm, handleChange, name, label } = props;
+  const { dataForm, handleChange, name, label, required } = props;
 
   return (
     <TextField
       variant="outlined"
-      required
       fullWidth
+      required={required}
       name={name}
       label={label}
       type="number"
@@ -26,4 +26,5 @@ NumberField.propTypes = {
   handleChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  required: PropTypes.bool.isRequired,
 };

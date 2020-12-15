@@ -5,6 +5,7 @@ import {
   EVENT_SUCCESS,
   GET_PLATFORM_EXCHANGE_SUCCESS,
   GET_ASSET_SUCCESS,
+  EVENT_FORM_CHOICE,
 } from '../actions/eventActions';
 
 const initialState = {
@@ -55,6 +56,14 @@ const event = (state = initialState, action = {}) => {
       return {
         ...state,
         asset: action.payload,
+      };
+    case EVENT_FORM_CHOICE:
+      return {
+        ...state,
+        dataForm: {
+          ...state.dataForm,
+          type: action.payload,
+        },
       };
     default:
       return state;

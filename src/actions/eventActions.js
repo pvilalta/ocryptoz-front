@@ -6,6 +6,7 @@ export const GET_PLATFORM_EXCHANGE = 'GET_PLATFORM_EXCHANGE';
 export const GET_PLATFORM_EXCHANGE_SUCCESS = 'GET_PLATFORM_EXCHANGE_SUCCESS';
 export const GET_ASSET = 'GET_ASSET';
 export const GET_ASSET_SUCCESS = 'GET_ASSET_SUCCESS';
+export const EVENT_FORM_CHOICE = 'EVENT_FORM_CHOICE';
 
 export const eventInputChange = (payload) => ({
   type: EVENT_INPUT_CHANGE,
@@ -41,5 +42,10 @@ export const getAsset = () => ({
 
 export const getAssetSuccess = (payload) => ({
   type: GET_ASSET_SUCCESS,
+  payload,
+});
+
+export const eventFormChoice = (payload) => ({
+  type: EVENT_FORM_CHOICE,
   payload,
 });
