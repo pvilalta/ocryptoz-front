@@ -23,9 +23,7 @@ const initialState = {
     password: '',
     passwordConfirmation: '',
   },
-  loggedData: {
-    email: 'hey@hey.fr',
-  },
+  loggedData: {},
 };
 
 const user = (state = initialState, action = {}) => {

@@ -3,6 +3,8 @@ import {
   EVENT_INPUT_CHANGE,
   EVENT_SUBMIT,
   EVENT_SUCCESS,
+  GET_PLATFORM_EXCHANGE_SUCCESS,
+  GET_ASSET_SUCCESS,
 } from '../actions/eventActions';
 
 const initialState = {
@@ -11,6 +13,8 @@ const initialState = {
     type: 'buy',
     date: new Date(),
   },
+  platformExchange: [],
+  asset: [],
 };
 
 const event = (state = initialState, action = {}) => {
@@ -41,6 +45,16 @@ const event = (state = initialState, action = {}) => {
           type: 'buy',
           date: new Date(),
         },
+      };
+    case GET_PLATFORM_EXCHANGE_SUCCESS:
+      return {
+        ...state,
+        platformExchange: action.payload,
+      };
+    case GET_ASSET_SUCCESS:
+      return {
+        ...state,
+        asset: action.payload,
       };
     default:
       return state;
