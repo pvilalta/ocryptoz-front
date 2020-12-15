@@ -2,7 +2,6 @@ import React from 'react';
 
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -69,14 +68,6 @@ export default function Buy(props) {
           Fill out the fields in order to declare your buy
         </Typography> */}
         <Error />
-        {/* <form
-          className={classes.form}
-          noValidate
-          onSubmit={(e) => {
-            e.preventDefault();
-            eventSubmit();
-          }}
-        > */}
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <DateField dataForm={dataForm} onInputChange={onInputChange} />
@@ -86,6 +77,7 @@ export default function Buy(props) {
               data={platformExchange}
               onInputChange={onInputChange}
               dataForm={dataForm}
+              required
               name="platform_sending"
               label="From"
             />
@@ -95,6 +87,7 @@ export default function Buy(props) {
               data={platformExchange}
               onInputChange={onInputChange}
               dataForm={dataForm}
+              required
               name="platform_receiving"
               label="To"
             />
@@ -104,6 +97,7 @@ export default function Buy(props) {
               data={asset}
               onInputChange={onInputChange}
               dataForm={dataForm}
+              required
               name="currency_asset"
               label="Asset"
             />
@@ -112,6 +106,7 @@ export default function Buy(props) {
             <NumberField
               dataForm={dataForm}
               handleChange={handleChange}
+              required
               name="quantity"
               label="Quantity"
             />
@@ -121,6 +116,7 @@ export default function Buy(props) {
               data={asset}
               onInputChange={onInputChange}
               dataForm={dataForm}
+              required
               name="currency_counterparty"
               label="Purchase currency"
             />
@@ -136,6 +132,7 @@ export default function Buy(props) {
             <NumberField
               dataForm={dataForm}
               handleChange={handleChange}
+              required
               name="value"
               label="Value"
             />
@@ -145,6 +142,7 @@ export default function Buy(props) {
               data={asset}
               onInputChange={onInputChange}
               dataForm={dataForm}
+              required={false}
               name="currency_fees"
               label="Fees currency"
             />
@@ -153,8 +151,9 @@ export default function Buy(props) {
             <NumberField
               dataForm={dataForm}
               handleChange={handleChange}
+              required={false}
               name="fees"
-              label="Fees amouont"
+              label="Fees amount"
             />
           </Grid>
           <Grid item xs={12}>
@@ -174,7 +173,6 @@ export default function Buy(props) {
         >
           Send
         </Button>
-        {/* </form> */}
       </div>
     </Container>
   );

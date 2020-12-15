@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Sell(props) {
+export default function Buy(props) {
   const classes = useStyles();
 
   const {
@@ -65,7 +65,7 @@ export default function Sell(props) {
       <CssBaseline />
       <div className={classes.paper}>
         {/* <Typography component="h1" variant="h5">
-          Fill out the fields in order to declare your Sell
+          Fill out the fields in order to declare your buy
         </Typography> */}
         <Error />
         <Grid container spacing={2}>
@@ -111,32 +111,6 @@ export default function Sell(props) {
               label="Quantity"
             />
           </Grid>
-          <Grid item xs={12}>
-            <DataField
-              data={asset}
-              onInputChange={onInputChange}
-              dataForm={dataForm}
-              required
-              name="currency_counterparty"
-              label="Sale currency"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <PayWayField
-              dataForm={dataForm}
-              handleChange={handleChange}
-              classStyle={classes.formControl}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <NumberField
-              dataForm={dataForm}
-              handleChange={handleChange}
-              required
-              name="value"
-              label="Value"
-            />
-          </Grid>
           <Grid item xs={12} sm={6}>
             <DataField
               data={asset}
@@ -151,6 +125,7 @@ export default function Sell(props) {
             <NumberField
               dataForm={dataForm}
               handleChange={handleChange}
+              required={false}
               name="fees"
               label="Fees amount"
             />
@@ -177,7 +152,7 @@ export default function Sell(props) {
   );
 }
 
-Sell.propTypes = {
+Buy.propTypes = {
   dataForm: PropTypes.object.isRequired,
   onInputChange: PropTypes.func.isRequired,
   eventSubmit: PropTypes.func.isRequired,

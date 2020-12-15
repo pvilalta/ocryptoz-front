@@ -3,43 +3,25 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import PropTypes from 'prop-types';
 import Buy from './Buy';
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
+import Sell from './Sell';
+import Transfer from './Transfer';
+import Reward from './Reward';
 
 export default function Event({
   dataForm,
   onInputChange,
+  chooseEvent,
   eventSubmit,
   platformExchange,
   asset,
 }) {
-  const handleChange = (e) => {
-    // const { name, value } = e.target;
-    // onInputChange({
-    //   [name]: value,
-    // });
-  };
+  function handleClick({ currentTarget }) {
+    const { value } = currentTarget;
+
+    chooseEvent(value);
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -49,26 +31,72 @@ export default function Event({
         justify="space-around"
         alignItems="center"
       >
-        {/* <ArrowBackIosIcon
-        fontSize="large"
-        style={{ position: 'absolute', right: '10px' }}
-      /> */}
-        <Button variant="outlined" color="primary">
-          Buy
+        <Button
+          value="buy"
+          variant="outlined"
+          color="primary"
+          onClick={handleClick}
+        >
+          buy
         </Button>
-        <Button variant="outlined" color="primary">
-          Sell
+        <Button
+          value="sell"
+          variant="outlined"
+          color="primary"
+          onClick={handleClick}
+        >
+          sell
         </Button>
-        <Button variant="outlined" color="primary">
-          Transfer
+        <Button
+          value="transfer"
+          variant="outlined"
+          color="primary"
+          onClick={handleClick}
+        >
+          transfer
         </Button>
-        <Button variant="outlined" color="primary">
-          Reward
+        <Button
+          value="reward"
+          variant="outlined"
+          color="primary"
+          onClick={handleClick}
+        >
+          reward
         </Button>
       </Grid>
 
       {dataForm && dataForm.type === 'buy' && (
         <Buy
+          dataForm={dataForm}
+          onInputChange={onInputChange}
+          eventSubmit={eventSubmit}
+          platformExchange={platformExchange}
+          asset={asset}
+        />
+      )}
+
+      {dataForm && dataForm.type === 'sell' && (
+        <Sell
+          dataForm={dataForm}
+          onInputChange={onInputChange}
+          eventSubmit={eventSubmit}
+          platformExchange={platformExchange}
+          asset={asset}
+        />
+      )}
+
+      {dataForm && dataForm.type === 'transfer' && (
+        <Transfer
+          dataForm={dataForm}
+          onInputChange={onInputChange}
+          eventSubmit={eventSubmit}
+          platformExchange={platformExchange}
+          asset={asset}
+        />
+      )}
+
+      {dataForm && dataForm.type === 'reward' && (
+        <Reward
           dataForm={dataForm}
           onInputChange={onInputChange}
           eventSubmit={eventSubmit}
@@ -85,4 +113,6 @@ Event.propTypes = {
   onInputChange: PropTypes.func.isRequired,
   eventSubmit: PropTypes.func.isRequired,
   platformExchange: PropTypes.array.isRequired,
+  asset: PropTypes.array.isRequired,
+  chooseEvent: PropTypes.func.isRequired,
 };

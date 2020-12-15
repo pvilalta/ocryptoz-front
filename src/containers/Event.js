@@ -1,6 +1,10 @@
 import { connect } from 'react-redux';
 import Event from '../components/EventForm';
-import { eventInputChange, eventSubmit } from '../actions/eventActions';
+import {
+  eventInputChange,
+  eventSubmit,
+  eventFormChoice,
+} from '../actions/eventActions';
 
 const mapState = (state) => ({
   dataForm: state.event.dataForm,
@@ -15,6 +19,10 @@ const mapDispatch = (dispatch) => ({
 
   eventSubmit: () => {
     dispatch(eventSubmit());
+  },
+
+  chooseEvent: (data) => {
+    dispatch(eventFormChoice(data));
   },
 });
 

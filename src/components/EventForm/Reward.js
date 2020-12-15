@@ -12,7 +12,6 @@ import Error from '../../containers/Error';
 import DataField from './fields/DataField';
 import DateField from './fields/DateField';
 import NumberField from './fields/NumberField';
-import PayWayField from './fields/PayWayField';
 import NoteField from './fields/NoteField';
 
 const useStyles = makeStyles((theme) => ({
@@ -41,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Sell(props) {
+export default function Buy(props) {
   const classes = useStyles();
 
   const {
@@ -65,22 +64,12 @@ export default function Sell(props) {
       <CssBaseline />
       <div className={classes.paper}>
         {/* <Typography component="h1" variant="h5">
-          Fill out the fields in order to declare your Sell
+          Fill out the fields in order to declare your buy
         </Typography> */}
         <Error />
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <DateField dataForm={dataForm} onInputChange={onInputChange} />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <DataField
-              data={platformExchange}
-              onInputChange={onInputChange}
-              dataForm={dataForm}
-              required
-              name="platform_sending"
-              label="From"
-            />
           </Grid>
           <Grid item xs={12} sm={6}>
             <DataField
@@ -112,50 +101,6 @@ export default function Sell(props) {
             />
           </Grid>
           <Grid item xs={12}>
-            <DataField
-              data={asset}
-              onInputChange={onInputChange}
-              dataForm={dataForm}
-              required
-              name="currency_counterparty"
-              label="Sale currency"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <PayWayField
-              dataForm={dataForm}
-              handleChange={handleChange}
-              classStyle={classes.formControl}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <NumberField
-              dataForm={dataForm}
-              handleChange={handleChange}
-              required
-              name="value"
-              label="Value"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <DataField
-              data={asset}
-              onInputChange={onInputChange}
-              dataForm={dataForm}
-              required={false}
-              name="currency_fees"
-              label="Fees currency"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <NumberField
-              dataForm={dataForm}
-              handleChange={handleChange}
-              name="fees"
-              label="Fees amount"
-            />
-          </Grid>
-          <Grid item xs={12}>
             <NoteField dataForm={dataForm} handleChange={handleChange} />
           </Grid>
         </Grid>
@@ -177,7 +122,7 @@ export default function Sell(props) {
   );
 }
 
-Sell.propTypes = {
+Buy.propTypes = {
   dataForm: PropTypes.object.isRequired,
   onInputChange: PropTypes.func.isRequired,
   eventSubmit: PropTypes.func.isRequired,
