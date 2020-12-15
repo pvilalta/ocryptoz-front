@@ -27,7 +27,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Event({ dataForm, onInputChange, eventSubmit }) {
+export default function Event({
+  dataForm,
+  onInputChange,
+  eventSubmit,
+  platformExchange,
+  asset,
+}) {
   const handleChange = (e) => {
     // const { name, value } = e.target;
     // onInputChange({
@@ -66,6 +72,8 @@ export default function Event({ dataForm, onInputChange, eventSubmit }) {
           dataForm={dataForm}
           onInputChange={onInputChange}
           eventSubmit={eventSubmit}
+          platformExchange={platformExchange}
+          asset={asset}
         />
       )}
     </Container>
@@ -76,4 +84,5 @@ Event.propTypes = {
   dataForm: PropTypes.object.isRequired,
   onInputChange: PropTypes.func.isRequired,
   eventSubmit: PropTypes.func.isRequired,
+  platformExchange: PropTypes.array.isRequired,
 };

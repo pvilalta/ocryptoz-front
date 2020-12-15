@@ -20,7 +20,6 @@ export default (store) => (next) => (action) => {
         method: 'get',
         url,
       }).then((res) => {
-        console.log('res', res);
         dispatch(getMainWalletSuccess(res.data));
       });
       break;

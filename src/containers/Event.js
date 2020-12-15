@@ -4,6 +4,8 @@ import { eventInputChange, eventSubmit } from '../actions/eventActions';
 
 const mapState = (state) => ({
   dataForm: state.event.dataForm,
+  platformExchange: state.event.platformExchange,
+  asset: state.event.asset,
 });
 
 const mapDispatch = (dispatch) => ({

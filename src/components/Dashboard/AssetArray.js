@@ -42,7 +42,6 @@ const theme = createMuiTheme({
 
 export default function assetArray({ mainWallet, onClickShowForm }) {
   const classes = useStyles();
-  console.log('mainWallet', mainWallet);
   return (
     <>
       <MuiThemeProvider theme={theme}>

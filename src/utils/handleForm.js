@@ -1,12 +1,15 @@
-export default (formData) => {
-  const newFormData = { ...formData, [formData.paymentWay]: formData.buyPrice };
+export default function payWay(formData) {
+  if (formData.type === 'buy' || formData.type === 'sell') {
+    const newFormData = {
+      ...formData,
+      [formData.paymentWay]: formData.value,
+    };
 
-  delete newFormData.paymentWay;
-  delete newFormData.buyPrice;
+    delete newFormData.paymentWay;
+    delete newFormData.value;
 
-  return newFormData;
-};
+    return newFormData;
+  }
 
-// const newFormData = Object.assign({}, formData, {
-//     [formData.paymentWay]: formData.buyPrice,
-//   });
+  return formData;
+}
