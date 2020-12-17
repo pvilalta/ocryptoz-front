@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 // == Import
 import SignIn from 'src/containers/SignIn';
 import SignUp from 'src/containers/SignUp';
-import Dashboard from 'src/containers/Dashboard';
+import MainPage from 'src/containers/MainPage';
 
 import './styles.css';
 
@@ -18,7 +18,7 @@ const App = ({ loggedData }) => (
         <Route
           path="/"
           exact
-          component={loggedData.email === undefined ? SignIn : Dashboard}
+          component={loggedData.email === undefined ? SignIn : MainPage}
         />
         <Route path="/signup" exact component={SignUp} />
       </Switch>

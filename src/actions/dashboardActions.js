@@ -1,25 +1,23 @@
-export const SHOW_DASHBOARD = 'SHOW_DASHBOARD';
-export const SHOW_WALLETS = 'SHOW_WALLETS';
-export const SHOW_SETTINGS = 'SHOW_SETTINGS';
-export const SHOW_CONTACT = 'SHOW_CONTACT';
-export const SHOW_EVENT_FORM = 'SHOW_EVENT_FORM';
+export const GET_MAIN_WALLET = 'GET MAIN WALLET';
+export const GET_MAIN_WALLET_SUCCESS = 'GET MAIN WALLET SUCCESS';
+export const GET_ASSET_PIE = 'GET_ASSET_PIE';
+export const GET_ASSET_PIE_SUCCESS = 'GET_ASSET_PIE_SUCCESS';
 
-export const showDashboard = () => ({
-  type: SHOW_DASHBOARD,
+export const getMainWallet = (payload) => ({
+  type: GET_MAIN_WALLET,
+  payload,
 });
 
-export const showWallets = () => ({
-  type: SHOW_WALLETS,
+export const getMainWalletSuccess = (payload) => ({
+  type: GET_MAIN_WALLET_SUCCESS,
+  payload,
 });
 
-export const showSettings = () => ({
-  type: SHOW_SETTINGS,
+export const getAssetPie = () => ({
+  type: GET_ASSET_PIE,
 });
 
-export const showContact = () => ({
-  type: SHOW_CONTACT,
-});
-
-export const showEventForm = () => ({
-  type: SHOW_EVENT_FORM,
+export const getAssetPieSuccess = (payload) => ({
+  type: GET_ASSET_PIE_SUCCESS,
+  payload,
 });

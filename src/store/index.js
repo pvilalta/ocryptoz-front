@@ -4,14 +4,14 @@ import { createStore, compose, applyMiddleware } from 'redux';
 // == Import : local
 import rootReducer from 'src/reducers';
 import logginMiddleware from '../middleware/logginMiddleware';
-import walletMiddleware from '../middleware/walletMiddleware';
+import dashboardMiddleware from '../middleware/dashboardMiddleware';
 import eventMiddleware from '../middleware/eventMiddleware';
 
 // == Enhancers
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const enhancers = composeEnhancers(
-  applyMiddleware(logginMiddleware, walletMiddleware, eventMiddleware)
+  applyMiddleware(logginMiddleware, dashboardMiddleware, eventMiddleware)
 );
 
 // == Store
