@@ -19,10 +19,12 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import PropTypes from 'prop-types';
-import { mainListItems, secondaryListItems } from './ListItems';
+import { MainListItems, secondaryListItems } from './ListItems';
 import Chart from './Chart';
 import Deposits from './Deposits';
-import AssetArray from '../../containers/AssetArray';
+import PlatformPie from './PlatformPie';
+
+import AssetArray from '../../containers/WalletData';
 import Event from '../../containers/Event';
 
 function Copyright() {
@@ -113,13 +115,19 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     overflow: 'auto',
     flexDirection: 'column',
+    boxSizing: 'border-box',
   },
   fixedHeight: {
     height: 240,
   },
 }));
 
-export default function Dashboard({ showForm }) {
+//
+export default function Dashboard({
+  showForm,
+  onClickShowForm,
+  onClickShowDash,
+}) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -128,6 +136,7 @@ export default function Dashboard({ showForm }) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   return (
     <div className={classes.root}>
@@ -178,33 +187,39 @@ export default function Dashboard({ showForm }) {
           </IconButton>
         </div>
         <Divider />
-        <List>{mainListItems}</List>
+        {/* <List>{mainListItems}</List> */}
+        <MainListItems onClickShowDash={onClickShowDash} />
         <Divider />
         <List>{secondaryListItems}</List>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
+          {/* Event */}
           {showForm && <Event />}
           {!showForm && (
             <Grid container spacing={3}>
-              {/* Event */}
               {/* Chart */}
-              <Grid item xs={12} md={8} lg={9}>
+              {/* <Grid item xs={12} md={8} lg={9}>
                 <Paper className={fixedHeightPaper}>
                   <Chart />
                 </Paper>
-              </Grid>
+              </Grid> */}
               {/* Recent Deposits */}
               <Grid item xs={12} md={4} lg={3}>
                 <Paper className={fixedHeightPaper}>
                   <Deposits />
                 </Paper>
               </Grid>
+              <Grid item xs={12} md={4} lg={3}>
+                <Paper className={fixedHeightPaper}>
+                  <PlatformPie />
+                </Paper>
+              </Grid>
               {/* Recent Orders */}
               <Grid item xs={12}>
                 <Paper className={classes.paper}>
-                  <AssetArray />
+                  <AssetArray onClickShowForm={onClickShowForm} />
                 </Paper>
               </Grid>
             </Grid>
@@ -220,4 +235,6 @@ export default function Dashboard({ showForm }) {
 
 Dashboard.propTypes = {
   showForm: PropTypes.bool.isRequired,
+  onClickShowForm: PropTypes.func.isRequired,
+  onClickShowDash: PropTypes.func.isRequired,
 };
