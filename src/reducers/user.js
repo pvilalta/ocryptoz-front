@@ -24,7 +24,7 @@ const initialState = {
     passwordConfirmation: '',
   },
   loggedData: {
-    email: 'hey@hey.fr',
+    // email: 'hey@hey.fr',
   },
 };
 

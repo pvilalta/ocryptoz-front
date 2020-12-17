@@ -3,7 +3,7 @@ import { Bar, Pie, Doughnut } from 'react-chartjs-2';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 
-import Title from './Title';
+import Title from '../MainPage/Title';
 
 import PropTypes from 'prop-types';
 
@@ -14,13 +14,13 @@ const useStyles = makeStyles({
   },
 });
 
-export default function PlatformPie() {
+export default function AssetPie({ assetPie }) {
   const chartData = {
-    labels: ['Boston', 'Worcester', 'Springfield'],
+    labels: assetPie.map((elem) => elem.asset),
     datasets: [
       {
-        label: 'Population',
-        data: [123932, 129301, 836382],
+        label: 'Percentage',
+        data: assetPie.map((elem) => elem.percentage),
         backgroundColor: [
           '#f44336',
           '#2196f3',
@@ -53,7 +53,7 @@ export default function PlatformPie() {
     <>
       {/* <CssBaseline /> */}
 
-      <Title>Platform repartiton</Title>
+      <Title>Asset repartition</Title>
       <Doughnut
         className={classes.root}
         data={chartData}
@@ -62,3 +62,7 @@ export default function PlatformPie() {
     </>
   );
 }
+
+AssetPie.propTypes = {
+  assetPie: PropTypes.array.isRequired,
+};

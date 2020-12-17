@@ -14,7 +14,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import PropTypes from 'prop-types';
-import Title from './Title';
+import Title from '../MainPage/Title';
 
 function preventDefault(event) {
   event.preventDefault();

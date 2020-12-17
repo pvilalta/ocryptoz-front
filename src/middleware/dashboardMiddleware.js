@@ -5,7 +5,7 @@ import {
   GET_ASSET_PIE,
   getAssetPieSuccess,
   getMainWalletSuccess,
-} from '../actions/walletActions';
+} from '../actions/dashboardActions';
 
 const api = 'http://localhost:1234';
 const wallet = '/main/wallet';

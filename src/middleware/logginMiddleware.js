@@ -11,7 +11,7 @@ import {
   signUpError,
 } from '../actions/signUpActions';
 
-import { getMainWallet } from '../actions/walletActions';
+import { getMainWallet, getAssetPie } from '../actions/walletActions';
 import { getPlatformExchange, getAsset } from '../actions/eventActions';
 
 const api = 'http://localhost:1234';
@@ -35,9 +35,9 @@ export default (store) => (next) => (action) => {
         .then(() => {
           dispatch(loginSuccess());
           dispatch(getMainWallet());
+          dispatch(getAssetPie());
           dispatch(getPlatformExchange());
           dispatch(getAsset());
-          dispatch(getAssetPie());
         })
 
         .catch((err) => {

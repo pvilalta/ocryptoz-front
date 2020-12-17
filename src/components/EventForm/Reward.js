@@ -1,12 +1,8 @@
 import React from 'react';
 
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-
-import Container from '@material-ui/core/Container';
-
 import PropTypes from 'prop-types';
 import Error from '../../containers/Error';
 import DataField from './fields/DataField';
@@ -15,20 +11,6 @@ import NumberField from './fields/NumberField';
 import NoteField from './fields/NoteField';
 
 const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
-  },
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
@@ -60,65 +42,62 @@ export default function Buy(props) {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        {/* <Typography component="h1" variant="h5">
+    <>
+      {/* <Typography component="h1" variant="h5">
           Fill out the fields in order to declare your buy
         </Typography> */}
-        <Error />
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <DateField dataForm={dataForm} onInputChange={onInputChange} />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <DataField
-              data={platformExchange}
-              onInputChange={onInputChange}
-              dataForm={dataForm}
-              required
-              name="platform_receiving"
-              label="To"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <DataField
-              data={asset}
-              onInputChange={onInputChange}
-              dataForm={dataForm}
-              required
-              name="currency_asset"
-              label="Asset"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <NumberField
-              dataForm={dataForm}
-              handleChange={handleChange}
-              required
-              name="quantity"
-              label="Quantity"
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <NoteField dataForm={dataForm} handleChange={handleChange} />
-          </Grid>
+      <Error />
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <DateField dataForm={dataForm} onInputChange={onInputChange} />
         </Grid>
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          color="primary"
-          className={classes.submit}
-          onClick={(e) => {
-            e.preventDefault();
-            eventSubmit();
-          }}
-        >
-          Send
-        </Button>
-      </div>
-    </Container>
+        <Grid item xs={12} sm={6}>
+          <DataField
+            data={platformExchange}
+            onInputChange={onInputChange}
+            dataForm={dataForm}
+            required
+            name="platform_receiving"
+            label="To"
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <DataField
+            data={asset}
+            onInputChange={onInputChange}
+            dataForm={dataForm}
+            required
+            name="currency_asset"
+            label="Asset"
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <NumberField
+            dataForm={dataForm}
+            handleChange={handleChange}
+            required
+            name="quantity"
+            label="Quantity"
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <NoteField dataForm={dataForm} handleChange={handleChange} />
+        </Grid>
+      </Grid>
+      <Button
+        type="submit"
+        fullWidth
+        variant="contained"
+        color="primary"
+        className={classes.submit}
+        onClick={(e) => {
+          e.preventDefault();
+          eventSubmit();
+        }}
+      >
+        Send
+      </Button>
+    </>
   );
 }
 

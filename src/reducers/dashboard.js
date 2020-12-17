@@ -1,39 +1,35 @@
-import { SHOW_EVENT_FORM, SHOW_DASHBOARD } from '../actions/dashboardActions';
+import {
+  GET_MAIN_WALLET,
+  GET_MAIN_WALLET_SUCCESS,
+  GET_ASSET_PIE,
+  GET_ASSET_PIE_SUCCESS,
+} from '../actions/dashboardActions';
 
 const initialState = {
-  display: {
-    showDash: true,
-    showForm: false,
-    showWallet: false,
-    showSettings: false,
-    showContact: false,
-  },
+  mainWallet: [],
+  assetPie: [],
 };
 
 const dashboard = (state = initialState, action = {}) => {
   switch (action.type) {
-    case SHOW_EVENT_FORM:
+    case GET_MAIN_WALLET:
       return {
         ...state,
-        display: {
-          showDash: false,
-          showForm: true,
-          showWallet: false,
-          showContact: false,
-        },
       };
-
-    case SHOW_DASHBOARD:
+    case GET_MAIN_WALLET_SUCCESS:
       return {
         ...state,
-        display: {
-          showDash: true,
-          showForm: false,
-          showWallet: false,
-          showContact: false,
-        },
+        mainWallet: [...action.payload],
       };
-
+    case GET_ASSET_PIE:
+      return {
+        ...state,
+      };
+    case GET_ASSET_PIE_SUCCESS:
+      return {
+        ...state,
+        assetPie: [...action.payload],
+      };
     default:
       return state;
   }
