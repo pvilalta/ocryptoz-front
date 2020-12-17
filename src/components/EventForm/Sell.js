@@ -151,6 +151,7 @@ export default function Sell(props) {
             <NumberField
               dataForm={dataForm}
               handleChange={handleChange}
+              required={false}
               name="fees"
               label="Fees amount"
             />

@@ -1,4 +1,3 @@
-import { SHOW_EVENT_FORM } from '../actions/assetArrayActions';
 import {
   EVENT_INPUT_CHANGE,
   EVENT_SUBMIT,
@@ -9,7 +8,6 @@ import {
 } from '../actions/eventActions';
 
 const initialState = {
-  showForm: false,
   dataForm: {
     type: 'buy',
     date: new Date(),
@@ -20,11 +18,6 @@ const initialState = {
 
 const event = (state = initialState, action = {}) => {
   switch (action.type) {
-    case SHOW_EVENT_FORM:
-      return {
-        ...state,
-        showForm: !state.showForm,
-      };
     case EVENT_INPUT_CHANGE:
       return {
         ...state,
@@ -40,7 +33,6 @@ const event = (state = initialState, action = {}) => {
     case EVENT_SUCCESS:
       return {
         ...state,
-        showForm: false,
         dataForm: {},
         dataForm: {
           type: 'buy',
@@ -60,9 +52,10 @@ const event = (state = initialState, action = {}) => {
     case EVENT_FORM_CHOICE:
       return {
         ...state,
+        dataForm: {},
         dataForm: {
-          ...state.dataForm,
           type: action.payload,
+          date: new Date(),
         },
       };
     default:

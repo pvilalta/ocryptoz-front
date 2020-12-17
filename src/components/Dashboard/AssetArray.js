@@ -7,12 +7,12 @@ import {
 } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
+import Box from '@material-ui/core/Box';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
-
 import PropTypes from 'prop-types';
 import Title from './Title';
 
@@ -23,6 +23,20 @@ function preventDefault(event) {
 const useStyles = makeStyles((theme) => ({
   seeMore: {
     marginTop: theme.spacing(3),
+  },
+  // boxStyle: {
+  //   width: '25%',
+  //   display: 'flex',
+  // },
+  addButton: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
+  },
+  addButtonMobile: {
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
+    },
   },
 }));
 
@@ -42,19 +56,31 @@ const theme = createMuiTheme({
 
 export default function assetArray({ mainWallet, onClickShowForm }) {
   const classes = useStyles();
+
   return (
     <>
       <MuiThemeProvider theme={theme}>
-        <Button
-          startIcon={<AddIcon />}
-          variant="outlined"
-          color="primary"
+        <Box
           onClick={() => {
             onClickShowForm();
           }}
         >
-          Add event
-        </Button>
+          <Button
+            variant="outlined"
+            color="primary"
+            className={classes.addButtonMobile}
+          >
+            <AddIcon />
+          </Button>
+          <Button
+            startIcon={<AddIcon />}
+            variant="outlined"
+            color="primary"
+            className={classes.addButton}
+          >
+            Add event
+          </Button>
+        </Box>
       </MuiThemeProvider>
       <Title>Wallet</Title>
       <Table size="small">

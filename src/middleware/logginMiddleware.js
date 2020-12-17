@@ -37,6 +37,7 @@ export default (store) => (next) => (action) => {
           dispatch(getMainWallet());
           dispatch(getPlatformExchange());
           dispatch(getAsset());
+          dispatch(getAssetPie());
         })
 
         .catch((err) => {

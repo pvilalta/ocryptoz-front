@@ -1,5 +1,6 @@
 import React from 'react';
 import ListItem from '@material-ui/core/ListItem';
+import Link from '@material-ui/core/Link';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
@@ -8,10 +9,11 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import PropTypes from 'prop-types';
 
-export const mainListItems = (
-  <div>
-    <ListItem button>
+export const MainListItems = ({ onClickShowDash }) => (
+  <>
+    <ListItem button onClick={onClickShowDash}>
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
@@ -35,7 +37,7 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Contact us" />
     </ListItem>
-  </div>
+  </>
 );
 
 export const secondaryListItems = (
@@ -61,3 +63,7 @@ export const secondaryListItems = (
     </ListItem>
   </div>
 );
+
+MainListItems.propTypes = {
+  onClickShowDash: PropTypes.func.isRequired,
+};
