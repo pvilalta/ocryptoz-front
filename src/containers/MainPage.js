@@ -1,6 +1,10 @@
 import { connect } from 'react-redux';
 import MainPage from '../components/MainPage';
-import { showDashboard, showEventForm } from '../actions/mainPageActions';
+import {
+  showDashboard,
+  showEventForm,
+  logOutSubmit,
+} from '../actions/mainPageActions';
 
 const mapState = (state) => ({
   showDash: state.mainPage.display.showDash,
@@ -8,6 +12,7 @@ const mapState = (state) => ({
   showWallet: state.mainPage.display.showWallet,
   showContact: state.mainPage.display.showContact,
   showSettings: state.mainPage.display.showSettings,
+  allWallet: state.mainPage.allWallet,
 });
 
 const mapDispatch = (dispatch) => ({
@@ -16,6 +21,10 @@ const mapDispatch = (dispatch) => ({
   },
   onClickShowForm: () => {
     dispatch(showEventForm());
+  },
+
+  onClickLogOut: () => {
+    dispatch(logOutSubmit());
   },
 });
 

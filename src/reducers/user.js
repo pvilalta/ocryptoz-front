@@ -10,6 +10,11 @@ import {
   SIGNUP_SUCCESS,
 } from '../actions/signUpActions';
 
+import {
+  LOGOUT_SUBMIT,
+  LOGOUT_SUBMIT_SUCCESS,
+} from '../actions/mainPageActions';
+
 const initialState = {
   signInData: {
     email: '',
@@ -48,6 +53,7 @@ const user = (state = initialState, action = {}) => {
         ...state,
         loggedData: {
           email: state.signInData.email,
+          currentWallet: action.payload,
         },
         signInData: {
           email: '',
@@ -77,6 +83,16 @@ const user = (state = initialState, action = {}) => {
           password: '',
           passwordConfirmation: '',
         },
+      };
+    case LOGOUT_SUBMIT:
+      return {
+        ...state,
+      };
+
+    case LOGOUT_SUBMIT_SUCCESS:
+      return {
+        ...state,
+        loggedData: {},
       };
     default:
       return state;

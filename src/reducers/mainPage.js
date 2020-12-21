@@ -1,4 +1,9 @@
-import { SHOW_DASHBOARD, SHOW_EVENT_FORM } from '../actions/mainPageActions';
+import {
+  SHOW_DASHBOARD,
+  SHOW_EVENT_FORM,
+  GET_ALL_WALLET,
+  GET_ALL_WALLET_SUCCESS,
+} from '../actions/mainPageActions';
 
 const initialState = {
   display: {
@@ -8,6 +13,7 @@ const initialState = {
     showSettings: false,
     showContact: false,
   },
+  allWallet: [],
 };
 
 const dashboard = (state = initialState, action = {}) => {
@@ -31,6 +37,16 @@ const dashboard = (state = initialState, action = {}) => {
           showWallet: false,
           showContact: false,
         },
+      };
+
+    case GET_ALL_WALLET:
+      return {
+        ...state,
+      };
+    case GET_ALL_WALLET_SUCCESS:
+      return {
+        ...state,
+        allWallet: [...action.payload],
       };
 
     default:

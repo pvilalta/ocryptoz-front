@@ -59,6 +59,7 @@ export default (store) => (next) => (action) => {
       axios({
         method: 'get',
         url,
+        withCredentials: true,
       })
         .then((res) => {
           dispatch(getAssetSuccess(res.data));

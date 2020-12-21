@@ -15,7 +15,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import PropTypes from 'prop-types';
-import { MainListItems, secondaryListItems } from './ListItems';
+import { MainListItems, SecondaryListItems } from './ListItems';
 import Dashboard from '../../containers/Dashboard';
 import Event from '../../containers/Event';
 
@@ -91,8 +91,10 @@ const useStyles = makeStyles((theme) => ({
 export default function MainPage({
   showForm,
   showDash,
+  allWallet,
   onClickShowDash,
   onClickShowForm,
+  onClickLogOut,
 }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
@@ -153,9 +155,13 @@ export default function MainPage({
         </div>
         <Divider />
         {/* <List>{mainListItems}</List> */}
-        <MainListItems onClickShowDash={onClickShowDash} />
+        <MainListItems
+          onClickShowDash={onClickShowDash}
+          onClickLogOut={onClickLogOut}
+        />
         <Divider />
-        <List>{secondaryListItems}</List>
+        {/* <List>{secondaryListItems}</List> */}
+        <SecondaryListItems allWallet={allWallet} />
       </Drawer>
       <Container className={classes.mainContent}>
         {showDash && <Dashboard onClickShowForm={onClickShowForm} />}
@@ -168,6 +174,7 @@ export default function MainPage({
 MainPage.propTypes = {
   showForm: PropTypes.bool.isRequired,
   showDash: PropTypes.bool.isRequired,
+  allWallet: PropTypes.array.isRequired,
   onClickShowDash: PropTypes.func.isRequired,
   onClickShowForm: PropTypes.func.isRequired,
 };
