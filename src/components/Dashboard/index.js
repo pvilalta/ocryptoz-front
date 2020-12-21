@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import PropTypes from 'prop-types';
 import Chart from './Chart';
-import Deposits from './Deposits';
+import TotalPnl from './TotalPnl';
 import AssetPie from './AssetPie';
 import AssetArray from './AssetArray';
 
@@ -52,7 +52,7 @@ export default function Dashboard({ mainWallet, assetPie, onClickShowForm }) {
         {/* Recent Deposits */}
         <Grid item xs={12} md={4} lg={3}>
           <Paper className={fixedHeightPaper}>
-            <Deposits />
+            <TotalPnl mainWallet={mainWallet} />
           </Paper>
         </Grid>
         <Grid item xs={12} md={4} lg={3}>

@@ -6,12 +6,18 @@ import rootReducer from 'src/reducers';
 import logginMiddleware from '../middleware/logginMiddleware';
 import dashboardMiddleware from '../middleware/dashboardMiddleware';
 import eventMiddleware from '../middleware/eventMiddleware';
+import mainPageMiddleware from '../middleware/mainPageMiddleware';
 
 // == Enhancers
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const enhancers = composeEnhancers(
-  applyMiddleware(logginMiddleware, dashboardMiddleware, eventMiddleware)
+  applyMiddleware(
+    logginMiddleware,
+    dashboardMiddleware,
+    eventMiddleware,
+    mainPageMiddleware
+  )
 );
 
 // == Store

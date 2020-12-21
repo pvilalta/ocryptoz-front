@@ -8,6 +8,7 @@ import {
 const initialState = {
   mainWallet: [],
   assetPie: [],
+  allWallet: [],
 };
 
 const dashboard = (state = initialState, action = {}) => {

@@ -13,6 +13,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
+import numberWithCommas from '../../utils/numberWithCommas';
 import PropTypes from 'prop-types';
 import Title from '../MainPage/Title';
 
@@ -24,10 +25,6 @@ const useStyles = makeStyles((theme) => ({
   seeMore: {
     marginTop: theme.spacing(3),
   },
-  // boxStyle: {
-  //   width: '25%',
-  //   display: 'flex',
-  // },
   addButton: {
     [theme.breakpoints.down('sm')]: {
       display: 'none',
@@ -107,9 +104,9 @@ export default function assetArray({ mainWallet, onClickShowForm }) {
               </TableCell>
               <TableCell>{row.asset}</TableCell>
               <TableCell>{row.quantity}</TableCell>
-              <TableCell>{row.usd_fees}</TableCell>
-              <TableCell>{row.usd_amount}</TableCell>
-              <TableCell>{row.pnl}</TableCell>
+              <TableCell>{numberWithCommas(row.usd_fees)}</TableCell>
+              <TableCell>{numberWithCommas(row.usd_amount)}</TableCell>
+              <TableCell>{numberWithCommas(row.pnl)}</TableCell>
               <TableCell>{row.pnl_percentage}</TableCell>
             </TableRow>
           ))}
